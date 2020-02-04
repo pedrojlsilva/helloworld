@@ -10,8 +10,6 @@ jobs:
       - checkout
       - run: git clone https://github.com/maracatronics/GEARSystem.git
       - run: cd GEARSystem
-      - run: rm -r branches
-      - run: rm -r tags
       - run: cd trunk
       - run: sh build/corba_skeletons.sh
       - run: qmake install_path=/usr/lib/
