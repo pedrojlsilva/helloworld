@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: ubuntu:18.04
       - environment:
-          QT_VERSION_MAJOR: 5.9
-          QT_VERSION: 5.9.4
+          QT_VERSION_MAJOR: 5.13
+          QT_VERSION: 5.13.2
           QT_DIST: /usr/local/Qt-"$QT_VERSION"
           QT_BASE_SRC: https://download.qt.io/official_releases/qt/"$QT_VERSION_MAJOR"/"$QT_VERSION"/submodules/qtbase-opensource-src-"$QT_VERSION".tar.xz
           QT_BASE_DIR: /qtbase-opensource-src-"$QT_VERSION"
