@@ -16,7 +16,9 @@ jobs:
       - run: rm -rf /var/lib/apt/lists/*
       - run: mkdir -p build
       - run: cd build 
-      - run: qmake -makefile
+      - run: echo $PWD
+      - run: ls
+      - run: qmake -makefile 
       - run: cd ..
       - run: make
 
