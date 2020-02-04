@@ -13,7 +13,7 @@ jobs:
       - run: cd GEARSystem/trunk && DEBIAN_FRONTEND=noninteractive ./build/corba_skeletons.sh
       - run: qmake install_path=/usr/lib/
       - run: make
-      - run: sudo sh install.sh
+      - run: cd GEARSystem/trunk && sudo sh install.sh
 
 workflows:
   version: 2.1
