@@ -3,25 +3,20 @@ jobs:
   build:
     docker:
       - image: ubuntu:18.04
-        environment:
-#           QT_VERSION_MAJOR: 5.13
-#           QT_VERSION: 5.13.2
-#           QT_DIST: /usr/local/Qt-"$QT_VERSION"
-#           QT_BASE_SRC: https://download.qt.io/official_releases/qt/"$QT_VERSION_MAJOR"/"$QT_VERSION"/submodules/qtbase-opensource-src-"$QT_VERSION".tar.xz
-#           QT_BASE_DIR: /qtbase-opensource-src-"$QT_VERSION"
-#           PATH: $QT_DIST/bin:$PATH
     steps:
       - run: DEBIAN_FRONTEND=noninteractive apt update && apt upgrade -y && apt install -y git gcc g++ build-essential cmake bash libxcb1-dev libicu-dev libssl-dev linux-headers-generic curl git libxrender-dev 
       - run: DEBIAN_FRONTEND=noninteractive apt install -y -qq libqt4-dev qt5-default libeigen3-dev protobuf-compiler libprotobuf-dev libdc1394-22 libdc1394-22-dev libv4l-0 libopencv-dev freeglut3-dev
       - run: rm -rf /var/lib/apt/lists/*
       - checkout
-      - run: mkdir -p build
-      - run: cd build 
-      - run: echo $PWD
-      - run: ls
-      - run: qmake -makefile 
-      - run: cd ..
+      - run: git clone https://github.com/maracatronics/GEARSystem.git
+      - run: cd GEARSystem
+      - run: rm -r branches
+      - run: rm -r tags
+      - run: cd trunk
+      - run: sh build/corba_skeletons.sh
+      - run: qmake install_path=/usr/lib/
       - run: make
+      - run: sudo sh install.sh
 
 workflows:
   version: 2.1
