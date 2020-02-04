@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: ubuntu:18.04
-      - environment:
+        environment:
           QT_VERSION_MAJOR: 5.13
           QT_VERSION: 5.13.2
           QT_DIST: /usr/local/Qt-"$QT_VERSION"
