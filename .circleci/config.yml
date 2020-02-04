@@ -12,9 +12,8 @@ jobs:
 #           PATH: $QT_DIST/bin:$PATH
     steps:
       - run: DEBIAN_FRONTEND=noninteractive apt update && apt -y install gcc g++ build-essential cmake bash libxcb1-dev libicu-dev libssl-dev linux-headers-generic curl git libxrender-dev 
-      - run: apt install -y libpng3 libpng-dev libjpeg-turbo8 libjpeg-turbo8-dev libicu55 libicu-dev 
-      - run: apt install -y  libgles2-mesa libgles2-mesa-dev libfreetype6-dev libsqlite3-dev libgstreamer0.10-0 libgstreamer0.10-dev 
-      - run: apt install -y libogg-dev libvorbis-dev bzip2 gperf bison ruby flex && rm -rf /var/lib/apt/lists/*
+      - run: DEBIAN_FRONTEND=noninteractive apt install -qq libqt4-dev libeigen3-dev protobuf-compiler libprotobuf-dev libdc1394-22 libdc1394-22-dev libv4l-0 libopencv-dev freeglut3-dev
+      - run: rm -rf /var/lib/apt/lists/*
       # - run: curl -sSL $QT_BASE_SRC | tar xJ cd $QT_BASE_DIR && bash ./configure --help && bash ./configure -opensource -confirm-license -static -no-accessibility -sql-sqlite -sqlite -no-qml-debug -no-harfbuzz -openssl-linked -qt-pcre -no-dbus -nomake tools -no-xkbcommon-evdev -no-xinput2 -no-xcb-xlib -no-glib -qt-xcb -no-compile-examples -nomake examples -no-gif -qt-doubleconversion -no-gtk && make install
 
 workflows:
