@@ -12,7 +12,7 @@ jobs:
       - run: cd GEARSystem
       - run: ls
       - run: cd GEARSystem/trunk
-      - run: sh build/corba_skeletons.sh
+      - run: DEBIAN_FRONTEND=noninteractive ./build/corba_skeletons.sh
       - run: qmake install_path=/usr/lib/
       - run: make
       - run: sudo sh install.sh
