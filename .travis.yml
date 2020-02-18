@@ -39,7 +39,7 @@ addons:
 install:
 #GEARSystem
   - git clone https://github.com/maracatronics/GEARSystem.git
-  - cd GEARSysten && cd trunk
+  - cd GEARSystem && cd trunk
   - sh build/corba_skeletons.sh
   - qmake install_path=/usr/lib/
   - make -j4
