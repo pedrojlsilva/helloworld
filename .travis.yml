@@ -7,18 +7,12 @@ compiler:
 # this results on 3 build configurations:
 # Ubuntu Precise and Trusty + Latest OSX image
 matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
     - os: linux
       dist: bionic
       sudo: required
     - os: linux
       dist: xenial
       sudo: required
-    - os: osx
-      osx_image: xcode11
 
 addons:
   apt:
@@ -32,12 +26,24 @@ addons:
       - protobuf-compiler 
       - libode-dev
       - libboost-dev
+      - omniorb
+      - omniidl
+      - omniorb-nameserver
+      - libomniorb4-dev
   homebrew:
     taps: robotology/formulae
     packages:
       - qt5
       - protobuf
       - robotology/formulae/ode
+install:
+#GEARSystem
+  - git clone https://github.com/maracatronics/GEARSystem.git
+  - cd GEARSysten && cd trunk
+  - sh build/corba_skeletons.sh
+  - qmake install_path=/usr/lib/
+  - make -j4
+  - sudo sh install.sh
 
 script:
   # grsim
